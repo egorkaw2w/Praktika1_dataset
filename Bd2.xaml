@@ -1,0 +1,34 @@
+﻿<Window x:Class="Praktika1._1.Bd2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Praktika1._1"
+        mc:Ignorable="d"
+        Title="Bd2" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Insert" Grid.ColumnSpan="2" Content="Добавить | Изменить" Click="Insert_Click"></Button>
+                <Button x:Name="Delete" Grid.Column="2" Content="Удалить" Click="Delete_Click"></Button>
+            </Grid>
+            <Button x:Name="Back" Grid.Column="0" Content="Назад" Click="Back_Click"/>
+            <Button x:Name="Next" Grid.Column="2" Content="Далее" Click="Next_Click" IsEnabled="False"></Button>
+        </Grid>
+        <DataGrid x:Name="Kamen" SelectionChanged="Kamen_SelectionChanged"></DataGrid>
+    </Grid>
+</Window>
