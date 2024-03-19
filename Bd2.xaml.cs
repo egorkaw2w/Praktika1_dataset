@@ -22,12 +22,17 @@ namespace Praktika1._1
     /// </summary>
     public partial class Bd2 : Window
     {
+        EmployeeViewTableAdapter View = new EmployeeViewTableAdapter();
         PostTableAdapter post = new PostTableAdapter();
+        EmployeeTableAdapter Employee = new EmployeeTableAdapter();
         public Bd2()
         {
 
             InitializeComponent();
-            Kamen.ItemsSource = post.GetData();
+            Kamen.ItemsSource = View.GetData();
+            ComboInfo.ItemsSource = post.GetData();
+            ComboInfo.DisplayMemberPath = "Post_Name";
+
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -75,6 +80,29 @@ namespace Praktika1._1
         private void Kamen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void ComboInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboInfo.SelectedItem != null)
+            {
+                Kamen.ItemsSource = View.Filter((ComboInfo.SelectedItem as DataRowView)[1].ToString());
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Kamen.ItemsSource = View.GetData();
+
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Kamen.ItemsSource = Employee.GetDataBy3(Searcher.Text);
+        }
+
+        private void Searcher_TextChanged(object sender, TextChangedEventArgs e)
+        {
         }
     }
 }

@@ -8,10 +8,30 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <TextBox x:Name="SearchText" Grid.Column="0"></TextBox>
+            <Button x:Name="Search" Grid.Column="1" Content="Поиск" BorderBrush="#FFA91B1B" Foreground="White" Background="#FF7B87EF" Click="Search_Click"></Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="Filter" SelectionChanged="Filter_SelectionChanged"/>
+            <Button x:Name="Clear" Grid.Column="1" Content="Очистить" BorderBrush="#FFA91B1B" Foreground="White" Background="#FF7B87EF"  Height="39" VerticalAlignment="Top" Click="Clear_Click" ></Button>
+            
+        </Grid>
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -29,7 +49,7 @@
             <Button x:Name="Back" Grid.Column="0" Content="Назад" Click="Back_Click" IsEnabled="False"></Button>
             <Button x:Name="Next" Grid.Column="2" Content="Далее" Click="Next_Click"></Button>
         </Grid>
-        <DataGrid x:Name="Kamen" SelectionChanged="Kamen_SelectionChanged"></DataGrid>
+        <DataGrid x:Name="Kamen" Grid.Row="2" SelectionChanged="Kamen_SelectionChanged"></DataGrid>
     </Grid>
     
     

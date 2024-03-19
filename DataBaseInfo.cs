@@ -4,6 +4,10 @@
 
     partial class DataBaseInfo
     {
+        partial class EmployeeDataTable
+        {
+        }
+
         partial class PostDataTable
         {
         }

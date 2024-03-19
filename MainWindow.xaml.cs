@@ -24,11 +24,14 @@ namespace Praktika1._1
     {
 
         EmployeeTableAdapter employee = new EmployeeTableAdapter();
+        PostTableAdapter post = new PostTableAdapter();
 
         public MainWindow()
         {
             InitializeComponent();
             Kamen.ItemsSource = employee.GetData();
+            Filter.ItemsSource = post.GetData();
+            Filter.DisplayMemberPath = "Post_Name";
         }
 
         private void Kamen_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,5 +83,25 @@ namespace Praktika1._1
 
         }
 
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            Kamen.ItemsSource = employee.GetDataBy3(SearchText.Text);
+        }
+
+ 
+
+        private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Filter.SelectedItem != null)
+            {
+                var id  = (int)(Filter.SelectedItem as DataRowView).Row[0];
+                Kamen.ItemsSource = employee.Filter(id);
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Kamen.ItemsSource = employee.GetData();
+        }
     }
 }
